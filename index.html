@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votre Nom - Data Scientist</title>
+    <title>Mohamed CHNAFY - Data Scientist</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -12,12 +12,13 @@
     <header>
         <nav id="navbar">
             <div class="container">
-                <h1 id="logo">Votre Nom</h1>
+                <h1 id="logo">Mohamed CHNAFY</h1>
                 <ul>
                     <li><a href="#home">Accueil</a></li>
                     <li><a href="#about">À propos</a></li>
                     <li><a href="#skills">Compétences</a></li>
-                    <li><a href="#projects">Projets</a></li>
+                    <li><a href="#experience">Expérience</a></li>
+                    <li><a href="#education">Formation</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <button id="theme-toggle">🌓</button>
@@ -30,35 +31,17 @@
             <div class="container">
                 <div class="home-content">
                     <div class="cv-detail">
-                        <h1>Je suis <span class="txt-type" data-wait="3000" data-words='["Data Scientist", "Machine Learning Engineer", "Data Analyst"]'></span></h1>
-                        <div class="cv-sections">
-                            <div class="cv-section animate-on-scroll" id="formation">
-                                <h3>Formation</h3>
-                                <ul>
-                                    <li>Master en Data Science, Université XYZ, 2020</li>
-                                    <li>Licence en Mathématiques Appliquées, Université ABC, 2018</li>
-                                </ul>
-                            </div>
-                            <div class="cv-section animate-on-scroll" id="experience">
-                                <h3>Expérience</h3>
-                                <ul>
-                                    <li>Data Scientist Senior, Entreprise XYZ, 2020-Présent</li>
-                                    <li>Data Analyst, Entreprise ABC, 2018-2020</li>
-                                </ul>
-                            </div>
-                            <div class="cv-section animate-on-scroll" id="competences">
-                                <h3>Compétences Clés</h3>
-                                <ul>
-                                    <li>Machine Learning</li>
-                                    <li>Deep Learning</li>
-                                    <li>Data Visualization</li>
-                                    <li>Big Data Analytics</li>
-                                </ul>
-                            </div>
+                        <h1>Je suis <span class="txt-type" data-wait="3000" data-words='["Data Scientist", "Analyste de données", "Machine Learning Engineer"]'></span></h1>
+                        <p>Data Scientist créatif et rigoureux avec plus de 5 ans d'expérience dans le secteur industriel</p>
+                        <div class="personal-info">
+                            <p>28 ans (né le 10/12/1995)</p>
+                            <p>Mobilité géographique : Internationale</p>
+                            <p>Permis de conduire : Permis B</p>
+                            <p>Nationalité : Marocaine (carte de résident de 10 ans)</p>
                         </div>
                     </div>
                     <div class="profile-photo">
-                        <img src="img/votre-photo.png" alt="Mohamed Chnafy">
+                        <img src="img/profile.jpg" alt="Mohamed CHNAFY">
                     </div>
                 </div>
             </div>
@@ -67,47 +50,67 @@
         <section id="about">
             <div class="container">
                 <h2>À propos de moi</h2>
-                <p class="animate-on-scroll">Je suis un Data Scientist passionné par l'extraction d'insights à partir de données complexes. Mon expertise couvre le machine learning, le deep learning, et la visualisation de données. Je m'efforce constamment d'appliquer ces compétences pour résoudre des problèmes du monde réel et aider les entreprises à prendre des décisions basées sur les données.</p>
+                <p>Data Scientist créatif et rigoureux, avec plus de 5 ans d'expérience dans le secteur industriel, démontrant une capacité exceptionnelle à transformer les données en informations exploitables pour répondre aux besoins business et faciliter la prise de décision stratégique. Fort d'un solide bagage en Python. Passionné par l'innovation et les défis, j'aime proposer de nouvelles idées, collaborer en mode projet et coordonner des activités scientifiques.</p>
             </div>
         </section>
 
         <section id="skills">
             <div class="container">
                 <h2>Mes Compétences</h2>
-                <div class="skills-container">
-                    <div class="chart-container animate-on-scroll">
-                        <h3>Compétences Techniques</h3>
-                        <canvas id="technicalSkillsChart"></canvas>
-                    </div>
-                    <div class="chart-container animate-on-scroll">
-                        <h3>Compétences de Programmation</h3>
-                        <canvas id="programmingSkillsChart"></canvas>
-                    </div>
+                <select id="skills-select">
+                    <option value="technical">Compétences Techniques</option>
+                    <option value="programming">Compétences de Programmation</option>
+                </select>
+                <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
                 </div>
             </div>
         </section>
 
-        <section id="projects">
+        <section id="experience">
             <div class="container">
-                <h2>Mes Projets</h2>
-                <div id="filters">
-                    <button class="filter-btn active" data-filter="*">Tous</button>
-                    <button class="filter-btn" data-filter=".machine-learning">Machine Learning</button>
-                    <button class="filter-btn" data-filter=".data-viz">Data Visualization</button>
-                    <button class="filter-btn" data-filter=".big-data">Big Data</button>
+                <h2>Expérience Professionnelle</h2>
+                <div class="experience-item">
+                    <h3>Data Scientist - Fondasol</h3>
+                    <p class="date">2020-2023</p>
+                    <ul>
+                        <li>Collaboration étroite avec les clients ingénieurs et les équipes</li>
+                        <li>Traitement complet des données avec R et Python</li>
+                        <li>Développement de tableaux de bord interactifs</li>
+                        <li>Veille scientifique et technique</li>
+                        <li>Modélisation prédictive avec séries temporelles</li>
+                        <li>Création et déploiement de modèles machine learning et deep learning</li>
+                    </ul>
                 </div>
-                <div class="projects-grid">
-                    <div class="project-item machine-learning animate-on-scroll">
-                        <img src="img/project1.jpg" alt="Projet 1">
-                        <h3>Projet ML 1</h3>
-                        <p>Description du projet...</p>
-                    </div>
-                    <div class="project-item data-viz animate-on-scroll">
-                        <img src="img/project2.jpg" alt="Projet 2">
-                        <h3>Projet Visualisation 1</h3>
-                        <p>Description du projet...</p>
-                    </div>
-                    <!-- Ajoutez d'autres projets ici -->
+                <div class="experience-item">
+                    <h3>Stage de fin d'étude en NLP - LIRIS</h3>
+                    <p class="date">2020</p>
+                    <ul>
+                        <li>Conception d'un agent conversationnel basé sur l'IA</li>
+                        <li>Synthèse de publications scientifiques</li>
+                        <li>Implémentation Python (PyTorch et TensorFlow)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <h2>Formation</h2>
+                <div class="education-item">
+                    <h3>Master 2 Mathématiques appliquées parcours Data science</h3>
+                    <p class="date">2019-2020</p>
+                    <p>Machine Learning, Times Series, Big data analytics, Data mining, Data Visualisation, Analyse factorielle, Statistique inférentielle</p>
+                </div>
+                <div class="education-item">
+                    <h3>Master 1 Mathématiques appliquées, statistique UCBL</h3>
+                    <p class="date">2018-2019</p>
+                    <p>Probabilités, Statistiques, Séries temporelles, Analyse numérique et optimisation, Traitement du signal</p>
+                </div>
+                <div class="education-item">
+                    <h3>Licence de Mathématiques Générales UAPV</h3>
+                    <p class="date">2016-2018</p>
+                    <p>Solides bases en mathématiques, probabilités, statistiques</p>
                 </div>
             </div>
         </section>
@@ -115,25 +118,22 @@
         <section id="contact">
             <div class="container">
                 <h2>Contactez-moi</h2>
-                <form id="contact-form" class="animate-on-scroll">
-                    <input type="text" name="name" placeholder="Votre nom" required>
-                    <input type="email" name="email" placeholder="Votre email" required>
-                    <textarea name="message" placeholder="Votre message" required></textarea>
-                    <button type="submit" class="btn">Envoyer</button>
-                </form>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> +33621791623</p>
+                    <p><i class="fas fa-envelope"></i> chnafy62@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 1 rue de l'hospitalité 30200 Bagnols sur céze, France</p>
+                    <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/mohamed-chnafy-30bb6b136/" target="_blank">LinkedIn</a></p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Votre Nom. Tous droits réservés.</p>
+            <p>&copy; 2023 Mohamed CHNAFY. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
