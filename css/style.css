@@ -1,8 +1,8 @@
 :root {
     --primary-color: rgb(3, 148, 222);
     --secondary-color: beige;
-    --accent-color: #0088a9;
     --text-color: #333;
+    --accent-color: #0088a9;
 }
 
 * {
@@ -16,7 +16,6 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--secondary-color);
-    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -28,12 +27,12 @@ body {
 
 /* Navbar */
 #navbar {
-    background: var(--primary-color);
-    color: #fff;
+    background: linear-gradient(to right, #0088a9, #00bcd4);
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
     top: 0;
     width: 100%;
-    transition: 0.3s;
     z-index: 1000;
 }
 
@@ -41,7 +40,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+}
+
+#logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
 }
 
 #navbar ul {
@@ -50,15 +54,24 @@ body {
 }
 
 #navbar ul li a {
-    color: #fff;
+    color: white;
+    text-decoration: none;
     padding: 0.75rem;
     margin: 0 0.25rem;
-    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 #navbar ul li a:hover {
-    background: var(--accent-color);
-    border-radius: 5px;
+    color: #ffd700;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 /* Sections */
@@ -68,8 +81,6 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
 section h2 {
@@ -81,7 +92,13 @@ section h2 {
 /* Home section */
 #home {
     background: url('../img/header-bg.jpg') no-repeat center center/cover;
-    color: #fff;
+    color: var(--text-color);
+}
+
+#home .container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .home-content {
@@ -92,7 +109,6 @@ section h2 {
 
 .cv-detail {
     width: 60%;
-    text-align: left;
 }
 
 .profile-photo {
@@ -101,7 +117,7 @@ section h2 {
 
 .profile-photo img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
@@ -110,63 +126,17 @@ section h2 {
     transform: scale(1.05);
 }
 
-.cv-sections {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.cv-section {
-    width: 48%;
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    transition: background-color 0.3s ease, width 0.3s ease;
-    cursor: pointer;
-}
-
-.cv-section:hover {
-    background-color: rgba(255,255,255,0.2);
-}
-
-.cv-section h3 {
-    margin-bottom: 10px;
-    color: var(--accent-color);
-}
-
-.cv-section ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.cv-section ul li {
-    margin-bottom: 5px;
-}
-
-.cv-section.expanded {
-    width: 100%;
-    background-color: rgba(255,255,255,0.3);
-}
-
 /* Skills section */
-.skills-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+#skills-select {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
 }
 
 .chart-container {
-    width: 48%;
-    margin-bottom: 20px;
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 20px;
-    transition: transform 0.3s ease;
-}
-
-.chart-container:hover {
-    transform: scale(1.02);
+    width: 80%;
+    height: 400px;
+    margin: 0 auto;
 }
 
 /* Projects section */
@@ -226,18 +196,6 @@ section h2 {
     background-color: #006d8f;
 }
 
-/* Animation classes */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.animate-on-scroll.animated {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
     .home-content {
@@ -246,7 +204,7 @@ section h2 {
     .cv-detail, .profile-photo {
         width: 100%;
     }
-    .cv-section, .chart-container {
+    .chart-container {
         width: 100%;
     }
 }

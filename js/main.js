@@ -58,47 +58,13 @@ TypeWriter.prototype.type = function() {
     setTimeout(() => this.type(), typeSpeed);
 }
 
-// Animation au défilement
-function animateOnScroll() {
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementBottom = element.getBoundingClientRect().bottom;
-        if (elementTop < window.innerHeight && elementBottom > 0) {
-            element.classList.add('animated');
-        }
-    });
-}
+// Skills chart
+let skillsChart;
 
-// Animation des graphiques
-function animateChart(chart) {
-    let currentPercentage = 0;
-    const intervalId = setInterval(() => {
-        currentPercentage += 1;
-        chart.data.datasets[0].data = chart.data.datasets[0].data.map(value => Math.min(value, (value / 100) * currentPercentage));
-        chart.update();
-        if (currentPercentage >= 100) {
-            clearInterval(intervalId);
-        }
-    }, 10);
-}
-
-// Initialisation
-document.addEventListener('DOMContentLoaded', function() {
-    // Typing effect
-    const txtElement = document.querySelector('.txt-type');
-    const words = JSON.parse(txtElement.getAttribute('data-words'));
-    const wait = txtElement.getAttribute('data-wait');
-    new TypeWriter(txtElement, words, wait);
-
-    // Scroll animation
-    window.addEventListener('scroll', animateOnScroll);
-
-    // Skills charts
-    const ctxTechnical = document.getElementById('technicalSkillsChart').getContext('2d');
-    const technicalSkillsChart = new Chart(ctxTechnical, {
-        type: 'radar',
-        data: {
+function createChart(type) {
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+    const data = type === 'technical' 
+        ? {
             labels: ['Machine Learning', 'Data Visualization', 'Big Data', 'Statistics', 'Data Mining', 'Deep Learning'],
             datasets: [{
                 label: 'Compétences Techniques',
@@ -110,22 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgb(54, 162, 235)'
             }]
-        },
-        options: {
-            responsive: true,
-            scale: {
-                ticks: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            }
         }
-    });
-
-    const ctxProgramming = document.getElementById('programmingSkillsChart').getContext('2d');
-    const programmingSkillsChart = new Chart(ctxProgramming, {
-        type: 'radar',
-        data: {
+        : {
             labels: ['Python', 'R', 'SQL', 'JavaScript', 'Java', 'C++'],
             datasets: [{
                 label: 'Compétences de Programmation',
@@ -137,9 +89,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgb(255, 99, 132)'
             }]
-        },
+        };
+
+    if (skillsChart) {
+        skillsChart.destroy();
+    }
+
+    skillsChart = new Chart(ctx, {
+        type: 'radar',
+        data: data,
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             scale: {
                 ticks: {
                     beginAtZero: true,
@@ -148,10 +109,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+}
 
-    // Animate charts
-    animateChart(technicalSkillsChart);
-    animateChart(programmingSkillsChart);
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Typing effect
+    const txtElement = document.querySelector('.txt-type');
+    const words = JSON.parse(txtElement.getAttribute('data-words'));
+    const wait = txtElement.getAttribute('data-wait');
+    new TypeWriter(txtElement, words, wait);
+
+    // Skills chart
+    const skillsSelect = document.getElementById('skills-select');
+    createChart('technical');
+    skillsSelect.addEventListener('change', (e) => createChart(e.target.value));
 
     // Project filtering
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -174,25 +145,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // CV section interactivity
-    document.querySelectorAll('.cv-section').forEach(section => {
-        section.addEventListener('click', () => {
-            section.classList.toggle('expanded');
-        });
-    });
-
     // Contact form submission
     const contactForm = document.getElementById('contact-form');
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         // Ici, vous pouvez ajouter le code pour envoyer le formulaire à un service backend
-        alert('Merci pour votre message ! Je vous recontacterai bientôt.');
-        contactForm.reset();
-    });
-
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-    });
-});

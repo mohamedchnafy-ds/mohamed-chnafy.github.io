@@ -31,34 +31,11 @@
                 <div class="home-content">
                     <div class="cv-detail">
                         <h1>Je suis <span class="txt-type" data-wait="3000" data-words='["Data Scientist", "Machine Learning Engineer", "Data Analyst"]'></span></h1>
-                        <div class="cv-sections">
-                            <div class="cv-section animate-on-scroll" id="formation">
-                                <h3>Formation</h3>
-                                <ul>
-                                    <li>Master en Data Science, Université XYZ, 2020</li>
-                                    <li>Licence en Mathématiques Appliquées, Université ABC, 2018</li>
-                                </ul>
-                            </div>
-                            <div class="cv-section animate-on-scroll" id="experience">
-                                <h3>Expérience</h3>
-                                <ul>
-                                    <li>Data Scientist Senior, Entreprise XYZ, 2020-Présent</li>
-                                    <li>Data Analyst, Entreprise ABC, 2018-2020</li>
-                                </ul>
-                            </div>
-                            <div class="cv-section animate-on-scroll" id="competences">
-                                <h3>Compétences Clés</h3>
-                                <ul>
-                                    <li>Machine Learning</li>
-                                    <li>Deep Learning</li>
-                                    <li>Data Visualization</li>
-                                    <li>Big Data Analytics</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p>Passionné par l'analyse de données et l'intelligence artificielle</p>
+                        <a href="#" class="btn">Télécharger CV</a>
                     </div>
                     <div class="profile-photo">
-                        <img src="img/votre-photo.png" alt="Mohamed Chnafy">
+                        <img src="img/votre-photo.jpg" alt="Votre Nom">
                     </div>
                 </div>
             </div>
@@ -67,22 +44,19 @@
         <section id="about">
             <div class="container">
                 <h2>À propos de moi</h2>
-                <p class="animate-on-scroll">Je suis un Data Scientist passionné par l'extraction d'insights à partir de données complexes. Mon expertise couvre le machine learning, le deep learning, et la visualisation de données. Je m'efforce constamment d'appliquer ces compétences pour résoudre des problèmes du monde réel et aider les entreprises à prendre des décisions basées sur les données.</p>
+                <p>Votre présentation...</p>
             </div>
         </section>
 
         <section id="skills">
             <div class="container">
                 <h2>Mes Compétences</h2>
-                <div class="skills-container">
-                    <div class="chart-container animate-on-scroll">
-                        <h3>Compétences Techniques</h3>
-                        <canvas id="technicalSkillsChart"></canvas>
-                    </div>
-                    <div class="chart-container animate-on-scroll">
-                        <h3>Compétences de Programmation</h3>
-                        <canvas id="programmingSkillsChart"></canvas>
-                    </div>
+                <select id="skills-select">
+                    <option value="technical">Compétences Techniques</option>
+                    <option value="programming">Compétences de Programmation</option>
+                </select>
+                <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
                 </div>
             </div>
         </section>
@@ -97,12 +71,12 @@
                     <button class="filter-btn" data-filter=".big-data">Big Data</button>
                 </div>
                 <div class="projects-grid">
-                    <div class="project-item machine-learning animate-on-scroll">
+                    <div class="project-item machine-learning">
                         <img src="img/project1.jpg" alt="Projet 1">
                         <h3>Projet ML 1</h3>
                         <p>Description du projet...</p>
                     </div>
-                    <div class="project-item data-viz animate-on-scroll">
+                    <div class="project-item data-viz">
                         <img src="img/project2.jpg" alt="Projet 2">
                         <h3>Projet Visualisation 1</h3>
                         <p>Description du projet...</p>
@@ -115,7 +89,7 @@
         <section id="contact">
             <div class="container">
                 <h2>Contactez-moi</h2>
-                <form id="contact-form" class="animate-on-scroll">
+                <form id="contact-form">
                     <input type="text" name="name" placeholder="Votre nom" required>
                     <input type="email" name="email" placeholder="Votre email" required>
                     <textarea name="message" placeholder="Votre message" required></textarea>
@@ -131,9 +105,6 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
