@@ -18,7 +18,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Typing effect
-const typeWriter = function(txtElement, words, wait = 3000) {
+const TypeWriter = function(txtElement, words, wait = 3000) {
     this.txtElement = txtElement;
     this.words = words;
     this.txt = '';
@@ -28,7 +28,7 @@ const typeWriter = function(txtElement, words, wait = 3000) {
     this.isDeleting = false;
 }
 
-typeWriter.prototype.type = function() {
+TypeWriter.prototype.type = function() {
     const current = this.wordIndex % this.words.length;
     const fullTxt = this.words[current];
 
@@ -58,7 +58,7 @@ typeWriter.prototype.type = function() {
     setTimeout(() => this.type(), typeSpeed);
 }
 
-// Fonction pour l'animation au défilement
+// Animation au défilement
 function animateOnScroll() {
     const elements = document.querySelectorAll('.animate-on-scroll');
     elements.forEach((element) => {
@@ -69,9 +69,6 @@ function animateOnScroll() {
         }
     });
 }
-
-// Écouteur d'événement pour l'animation au défilement
-window.addEventListener('scroll', animateOnScroll);
 
 // Animation des graphiques
 function animateChart(chart) {
@@ -86,26 +83,116 @@ function animateChart(chart) {
     }, 10);
 }
 
-// Création et animation des graphiques
+// Initialisation
 document.addEventListener('DOMContentLoaded', function() {
+    // Typing effect
+    const txtElement = document.querySelector('.txt-type');
+    const words = JSON.parse(txtElement.getAttribute('data-words'));
+    const wait = txtElement.getAttribute('data-wait');
+    new TypeWriter(txtElement, words, wait);
+
+    // Scroll animation
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Skills charts
     const ctxTechnical = document.getElementById('technicalSkillsChart').getContext('2d');
     const technicalSkillsChart = new Chart(ctxTechnical, {
-        // ... (configuration du graphique comme précédemment)
+        type: 'radar',
+        data: {
+            labels: ['Machine Learning', 'Data Visualization', 'Big Data', 'Statistics', 'Data Mining', 'Deep Learning'],
+            datasets: [{
+                label: 'Compétences Techniques',
+                data: [90, 85, 80, 85, 75, 70],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }]
+        },
+        options: {
+            responsive: true,
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
     });
 
     const ctxProgramming = document.getElementById('programmingSkillsChart').getContext('2d');
     const programmingSkillsChart = new Chart(ctxProgramming, {
-        // ... (configuration du graphique comme précédemment)
+        type: 'radar',
+        data: {
+            labels: ['Python', 'R', 'SQL', 'JavaScript', 'Java', 'C++'],
+            datasets: [{
+                label: 'Compétences de Programmation',
+                data: [95, 80, 85, 70, 60, 55],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
+            }]
+        },
+        options: {
+            responsive: true,
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
     });
 
-    // Animation des graphiques au chargement de la page
+    // Animate charts
     animateChart(technicalSkillsChart);
     animateChart(programmingSkillsChart);
-});
 
-// Ajout de l'interactivité aux sections du CV
-document.querySelectorAll('.cv-section').forEach(section => {
-    section.addEventListener('click', () => {
-        section.classList.toggle('expanded');
+    // Project filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(button => button.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filterValue = btn.getAttribute('data-filter');
+            
+            projectItems.forEach(item => {
+                if (filterValue === '*' || item.classList.contains(filterValue.substring(1))) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // CV section interactivity
+    document.querySelectorAll('.cv-section').forEach(section => {
+        section.addEventListener('click', () => {
+            section.classList.toggle('expanded');
+        });
+    });
+
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Ici, vous pouvez ajouter le code pour envoyer le formulaire à un service backend
+        alert('Merci pour votre message ! Je vous recontacterai bientôt.');
+        contactForm.reset();
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
     });
 });
